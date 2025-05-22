@@ -14,10 +14,11 @@ class Cliente(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     ec2_id = Column(String, unique=True, nullable=False)
-    horas_contratadas = Column(Float, nullable=False)
+    horas_contratadas = Column(Float, nullable=False)        # Total contratado
+    horas_restantes = Column(Float, nullable=False)          # Horas que quedan
     hora_inicio = Column(DateTime, nullable=True)
     fecha_apagado = Column(DateTime, nullable=True)
     state = Column(Enum(EstadoCliente), default=EstadoCliente.off, nullable=False)
 
     def __repr__(self):
-        return f"<Cliente(id={self.id}, ec2_id={self.ec2_id}, state={self.state})>"
+        return f"<Cliente(id={self.id}, ec2_id={self.ec2_id}, state={self.state}, horas_restantes={self.horas_restantes})>"
